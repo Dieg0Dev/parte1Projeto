@@ -12,6 +12,7 @@ int main(){
 		std::cout << std::endl;
 		std::cout << "Selecione uma operação:" << std::endl;
 		std::cout << "1. Criar Conta" << std::endl;
+        std::cout << "2. Consultar Saldo" << std::endl;
 		std::cout << "6. Sair" << std::endl;
 		std::cout << std::endl;
 		std::cin >> op;
@@ -20,6 +21,8 @@ int main(){
 		switch(op){
 			case 1:
 				banco.cadastrarConta(); break;
+            case 2:
+                banco.consultarSaldo(); break;
 			case 6:
 				break;
 			default:
