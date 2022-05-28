@@ -76,3 +76,36 @@ void Banco::funcaoDebito(){
 	}
 	return;
 }
+
+void Banco::transferencia(){
+	std::string aux, aux2;
+	float transferencia;
+	Conta *contaAuxiliar = cabeca;
+	Conta *contaAuxiliar2 = cabeca;
+	std::cout << "Digite o numero da conta origem" << std::endl;
+	std::cin >> aux;
+
+	while(contaAuxiliar){
+		if(aux == contaAuxiliar->getNumero()){
+			break;
+		}
+		contaAuxiliar = contaAuxiliar->getProximo();
+	}
+
+	std::cout << "Digite o numero da conta destino" << std::endl;
+	std::cin >> aux2;
+
+	while(contaAuxiliar2){
+		if(aux2 == contaAuxiliar2->getNumero()){
+			break;
+		}
+	contaAuxiliar2 = contaAuxiliar2->getProximo();
+	}
+
+	std::cout << "Digite o valor da transferencia" << std::endl;
+	std::cin >> transferencia;
+
+		contaAuxiliar->diminuirSaldo(transferencia);
+		contaAuxiliar2->aumentarSaldo(transferencia);
+	return;
+}
