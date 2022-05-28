@@ -40,3 +40,39 @@ void Banco::consultarSaldo(){
 	}
 	return;
 }
+
+void Banco::funcaoCredito(){
+	std::string aux;
+	float valor;
+	std::cout << "Digite o numero da conta para adicionar o credito" << std::endl;
+	std::cin >> aux;
+	Conta* contaAuxiliar = cabeca;
+	while(contaAuxiliar){
+		if(aux == contaAuxiliar->getNumero()){
+			std::cout << "Digite o valor a ser creditado: ";
+			std::cin >> valor;
+			contaAuxiliar->aumentarSaldo(valor);
+            return;
+		}
+		contaAuxiliar = contaAuxiliar->getProximo();
+	}
+	return;
+}
+
+void Banco::funcaoDebito(){
+	std::string aux;
+	float valor;
+	std::cout << "Digite o numero da conta para debitar um valor" << std::endl;
+	std::cin >> aux;
+	Conta* contaAuxiliar = cabeca;
+	while(contaAuxiliar){
+		if(aux == contaAuxiliar->getNumero()){
+			std::cout << "Digite o valor a ser debitado: ";
+			std::cin >> valor;
+			contaAuxiliar->diminuirSaldo(valor);
+            return;
+		}
+		contaAuxiliar = contaAuxiliar->getProximo();
+	}
+	return;
+}
