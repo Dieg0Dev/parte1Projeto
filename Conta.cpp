@@ -1,0 +1,53 @@
+#include "Conta.h"
+#include <iostream>
+#include <string>
+#include <cstdio>
+
+Conta::Conta(std::string numero){
+	this->numero = numero;
+	this->saldo = 0;
+	this->proximo = nullptr;
+	this->anterior = nullptr;
+}
+
+void Conta::setNumero(std::string numero){
+	this->numero = numero;
+}
+
+std::string Conta::getNumero(){
+	return this->numero;
+}
+
+void Conta::setSaldo(float saldo){
+	this->saldo = saldo;
+}
+
+float Conta::getSaldo(){
+	return this->saldo;
+}
+
+void Conta::setProximo(Conta *proximo){
+	proximo = proximo;
+}
+
+Conta *Conta::getProximo(){
+	return this->proximo;
+}
+
+void Conta::setAnterior(Conta *anterior){
+	anterior = anterior;
+}
+
+Conta *Conta::getAnterior(){
+	return this->anterior;
+}
+
+float Conta::aumentarSaldo(float valor){
+	return this->saldo += valor;
+}
+
+float Conta::diminuirSaldo(float valor){
+	return this->saldo -= valor;
+}
+
+/////////////////////////
