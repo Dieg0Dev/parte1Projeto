@@ -24,3 +24,19 @@ void Banco::cadastrarConta(){
 		cauda = novaConta;
 	}
 }
+
+void Banco::consultarSaldo(){
+	std::string aux;
+	std::cout << "Digite o numero da conta: " << std::endl;
+	std::cin >> aux;
+	Conta* contaAuxiliar = cabeca;
+	while(contaAuxiliar){
+		if(aux == contaAuxiliar->getNumero()){
+			std::cout << "Numero da conta: " << contaAuxiliar->getNumero() << std::endl;
+			std::cout << "Saldo da conta: " << contaAuxiliar->getSaldo() << std::endl;
+			return;
+		}
+		contaAuxiliar = contaAuxiliar->getProximo();
+	}
+	return;
+}
