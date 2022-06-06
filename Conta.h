@@ -9,8 +9,8 @@ class Conta{
 private:
 	std::string numero;
 	float saldo;
-	Conta *proximo;
-	Conta *anterior;
+	Conta *proximo = nullptr;
+	Conta *anterior = nullptr;
 
 public:
 	//construtor

@@ -27,7 +27,7 @@ float Conta::getSaldo(){
 }
 
 void Conta::setProximo(Conta *proximo){
-	proximo = proximo;
+	this->proximo = proximo;
 }
 
 Conta *Conta::getProximo(){
@@ -35,7 +35,7 @@ Conta *Conta::getProximo(){
 }
 
 void Conta::setAnterior(Conta *anterior){
-	anterior = anterior;
+	this->anterior = anterior;
 }
 
 Conta *Conta::getAnterior(){
