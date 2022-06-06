@@ -65,6 +65,10 @@ void Banco::funcaoCredito(){
 		if(aux == contaAuxiliar->getNumero()){
 			std::cout << "Digite o valor a ser creditado: ";
 			std::cin >> valor;
+			if(valor < 0){
+				std::cout << "Valor invalido" << std::endl;
+				return;
+			}
 			contaAuxiliar->aumentarSaldo(valor);
             return;
 		}
@@ -85,6 +89,10 @@ void Banco::funcaoDebito(){
 		if(aux == contaAuxiliar->getNumero()){
 			std::cout << "Digite o valor a ser debitado: ";
 			std::cin >> valor;
+			if(valor < 0){
+				std::cout << "Valor invalido" << std::endl;
+				return;
+			}	
 			if(valor > contaAuxiliar->getSaldo()){
 				std::cout << "Saldo insuficiente" << std::endl;
 				return;
@@ -130,6 +138,10 @@ void Banco::transferencia(){
 
 	std::cout << "Digite o valor da transferencia" << std::endl;
 	std::cin >> transferencia;
+	if(transferencia < 0){
+		std::cout << "Valor invalido" << std::endl;
+		return;
+	}	
 	if(transferencia > contaAuxiliar1->getSaldo()){
 		std::cout << "Conta origem sem saldo para operacao" << std::endl;
 		return;
