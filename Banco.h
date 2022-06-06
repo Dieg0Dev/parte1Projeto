@@ -12,6 +12,13 @@ private:
 	Conta *cauda = nullptr;
 
 public:
+	//gets e sets
+	void setCabeca(Conta *cabeca); 
+	Conta *getCabeca();
+	void setCauda(Conta *cauda); 
+	Conta *getCauda();
+
+	//outros metodos
 	bool vazia();
 	void cadastrarConta();
 	void consultarSaldo();
