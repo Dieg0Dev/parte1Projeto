@@ -25,6 +25,7 @@ public:
 	void funcaoCredito();
 	void funcaoDebito();
 	void transferencia();
+	void renderJuros();
 };
 
 #endif

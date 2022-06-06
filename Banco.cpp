@@ -4,6 +4,22 @@
 #include <string>
 #include <cstdio>
 
+void Banco::setCabeca(Conta *cabeca){
+	this->cabeca = cabeca;
+}
+
+Conta *Banco::getCabeca(){
+	return this->cabeca;
+}
+
+void Banco::setCauda(Conta *cauda){
+	this->cauda = cauda;
+}
+
+Conta *Banco::getCauda(){
+	return this->cauda;
+}
+
 bool Banco::vazia(){
 	return (cabeca == nullptr);
 }
@@ -39,6 +55,11 @@ void Banco::cadastrarConta(int opcao){
 		if(opcao == 2){
 			novaConta->setPontuacao(10);
 			novaConta->setBonificacao(true);
+			return;
+		}
+
+		if(opcao == 3){
+			novaConta->setPoupanca(true);
 			return;
 		}
 
@@ -167,4 +188,32 @@ void Banco::transferencia(){
 		aux = aux + (transferencia / 200);
 		contaAuxiliar2->setPontuacao(aux);
 	}
+}
+
+void Banco::renderJuros(){
+	std::string aux;
+	float valor;
+	std::cout << "Digite o numero da conta onde será calculado o rendimento de juros" << std::endl;
+	std::cin >> aux;
+	Conta* contaAuxiliar = getCabeca();
+	while(contaAuxiliar){
+		if(aux == contaAuxiliar->getNumero()){
+			if(!contaAuxiliar->getPoupanca()){
+				std::cout << "Conta nao esta na categoria Poupanca" << std::endl;
+				return;
+			}
+			std::cout << "Digite a taxa de juros a ser calculada (apenas valores):";
+			std::cin >> valor;
+			if(valor < 0){
+				std::cout << "Valor de juros invalido" << std::endl;
+				return;
+			}
+			contaAuxiliar->setSaldo(contaAuxiliar->getSaldo() * (1+(valor/100)));
+            return;
+		}
+		if(contaAuxiliar->getProximo() == nullptr) break;
+		contaAuxiliar = contaAuxiliar->getProximo();
+	}
+	std::cout << "Conta nao encontrada" << std::endl;
+	return;
 }

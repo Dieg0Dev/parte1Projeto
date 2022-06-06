@@ -58,6 +58,14 @@ bool Conta::getBonificacao(){
 	return this->bonus;
 }
 
+void Conta::setPoupanca(bool poupanca){
+	this->poupanca = poupanca;
+}
+
+bool Conta::getPoupanca(){
+	return this->poupanca;
+}
+
 float Conta::aumentarSaldo(float valor){
 	return this->saldo += valor;
 }

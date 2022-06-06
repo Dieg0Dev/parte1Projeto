@@ -13,6 +13,7 @@ private:
 	Conta *anterior = nullptr;
 	bool bonus = false;
 	int pontuacao = 0;
+	bool poupanca = false;
 
 public:
 	//construtor
@@ -31,6 +32,8 @@ public:
 	int getPontuacao();
 	void setBonificacao(bool bonus);
 	bool getBonificacao();
+	void setPoupanca(bool poupanca);
+	bool getPoupanca();
 
 	//outros métodos
 	float aumentarSaldo(float valor);
