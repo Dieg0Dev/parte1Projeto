@@ -42,6 +42,22 @@ Conta *Conta::getAnterior(){
 	return this->anterior;
 }
 
+void Conta::setPontuacao(int pontuacao){
+	this->pontuacao = pontuacao;
+}
+
+int Conta::getPontuacao(){
+	return this->pontuacao;
+}
+
+void Conta::setBonificacao(bool bonus){
+	this->bonus = bonus;
+}
+
+bool Conta::getBonificacao(){
+	return this->bonus;
+}
+
 float Conta::aumentarSaldo(float valor){
 	return this->saldo += valor;
 }
