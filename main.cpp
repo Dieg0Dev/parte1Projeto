@@ -17,7 +17,9 @@ int main(){
 		std::cout << "4. Funcao Debito" << std::endl;
         std::cout << "5. Transferencia" << std::endl;
 		std::cout << "6. Criar Conta com Bonus" << std::endl;
-		std::cout << "7. Sair" << std::endl;
+		std::cout << "7. Criar Conta Poupanca" << std::endl;
+		std::cout << "8. Render Juros" << std::endl;
+		std::cout << "9. Sair" << std::endl;
 		std::cout << std::endl;
 		std::cin >> op;
 		system("clear||cls");
@@ -36,6 +38,10 @@ int main(){
 			case 6:
 				banco.cadastrarConta(2); break;
 			case 7:
+				banco.cadastrarConta(3); break;
+			case 8:
+				banco.renderJuros(); break;
+			case 9:
 				break;
 			default:
 				std::cout << "Opção inválida, digite novamente." << std::endl;
