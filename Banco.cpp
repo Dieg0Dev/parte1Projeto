@@ -8,15 +8,16 @@ bool Banco::vazia(){
 	return (cabeca == nullptr);
 }
 
-void Banco::cadastrarConta(){
+void Banco::cadastrarConta(int opcao){
 	std::string numero;
 	std::cout << "Digite o numero da conta: ";
 	std::cin >> numero;
 
 	if(vazia()){
 		Conta *novaConta = new Conta(numero);
-		cabeca = novaConta;
-		cauda = novaConta;
+		setCabeca(novaConta);
+		setCauda(novaConta);
+		std::cout << "Conta cadastrada com sucesso!" << std::endl;
 	} else {
 		Conta *contaAuxiliar = getCabeca();
 		while(contaAuxiliar){
@@ -34,6 +35,14 @@ void Banco::cadastrarConta(){
 		novaConta->setAnterior(getCauda());
 		contaAuxiliar->setProximo(novaConta);
 		setCauda(novaConta);
+
+		if(opcao == 2){
+			novaConta->setPontuacao(10);
+			novaConta->setBonificacao(true);
+			return;
+		}
+
+		std::cout << "Conta cadastrada com sucesso!" << std::endl;
 	}
 }
 
@@ -70,6 +79,11 @@ void Banco::funcaoCredito(){
 				return;
 			}
 			contaAuxiliar->aumentarSaldo(valor);
+			if(contaAuxiliar->getBonificacao()){
+				int aux = contaAuxiliar->getPontuacao();
+				aux = aux + (valor / 100);
+				contaAuxiliar->setPontuacao(aux);
+			}
             return;
 		}
 		if(contaAuxiliar->getProximo() == nullptr) break;
@@ -148,4 +162,9 @@ void Banco::transferencia(){
 	}
 	contaAuxiliar1->diminuirSaldo(transferencia);
 	contaAuxiliar2->aumentarSaldo(transferencia);
+	if(contaAuxiliar2->getBonificacao()){
+		int aux = contaAuxiliar2->getPontuacao();
+		aux = aux + (transferencia / 200);
+		contaAuxiliar2->setPontuacao(aux);
+	}
 }

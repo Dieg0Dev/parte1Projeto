@@ -23,7 +23,7 @@ int main(){
 
 		switch(op){
 			case 1:
-				banco.cadastrarConta(); break;
+				banco.cadastrarConta(1); break;
             case 2:
                 banco.consultarSaldo(); break;
             case 3:

@@ -11,6 +11,8 @@ private:
 	float saldo;
 	Conta *proximo = nullptr;
 	Conta *anterior = nullptr;
+	bool bonus = false;
+	int pontuacao = 0;
 
 public:
 	//construtor
@@ -25,6 +27,10 @@ public:
 	Conta *getProximo();
 	void setAnterior(Conta *anterior);
 	Conta *getAnterior();
+	void setPontuacao(int pontuacao);
+	int getPontuacao();
+	void setBonificacao(bool bonus);
+	bool getBonificacao();
 
 	//outros métodos
 	float aumentarSaldo(float valor);
