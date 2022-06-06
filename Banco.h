@@ -20,11 +20,12 @@ public:
 
 	//outros metodos
 	bool vazia();
-	void cadastrarConta();
+	void cadastrarConta(int opcao);
 	void consultarSaldo();
 	void funcaoCredito();
 	void funcaoDebito();
 	void transferencia();
+	void renderJuros();
 };
 
 #endif

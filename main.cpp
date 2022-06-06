@@ -16,14 +16,15 @@ int main(){
         std::cout << "3. Funcao Credito" << std::endl;
 		std::cout << "4. Funcao Debito" << std::endl;
         std::cout << "5. Transferencia" << std::endl;
-		std::cout << "6. Sair" << std::endl;
+		std::cout << "6. Criar Conta com Bonus" << std::endl;
+		std::cout << "7. Sair" << std::endl;
 		std::cout << std::endl;
 		std::cin >> op;
 		system("clear||cls");
 
 		switch(op){
 			case 1:
-				banco.cadastrarConta(); break;
+				banco.cadastrarConta(1); break;
             case 2:
                 banco.consultarSaldo(); break;
             case 3:
@@ -33,6 +34,8 @@ int main(){
             case 5:
 				banco.transferencia(); break;
 			case 6:
+				banco.cadastrarConta(2); break;
+			case 7:
 				break;
 			default:
 				std::cout << "Opção inválida, digite novamente." << std::endl;
