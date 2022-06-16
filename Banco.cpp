@@ -28,11 +28,20 @@ void Banco::cadastrarConta(int opcao){
 	std::string numero;
 	std::cout << "Digite o numero da conta: ";
 	std::cin >> numero;
+	
 
 	if(vazia()){
 		Conta *novaConta = new Conta(numero);
 		setCabeca(novaConta);
 		setCauda(novaConta);
+
+		if(novaConta->getBonificacao()){
+			std::cout << "Conta cadastrada com sucesso!" << std::endl;
+		}
+		std::cout << "Digite o saldo inicial da conta: ";
+		float saldo;
+		std::cin >> saldo;
+		novaConta->setSaldo(saldo);
 		std::cout << "Conta cadastrada com sucesso!" << std::endl;
 	} else {
 		Conta *contaAuxiliar = getCabeca();
@@ -69,6 +78,10 @@ void Banco::cadastrarConta(int opcao){
 			return;
 		}
 
+		std::cout << "Digite o saldo inicial da conta: ";
+		float saldo;
+		std::cin >> saldo;
+		novaConta->setSaldo(saldo);
 		std::cout << "Conta cadastrada com sucesso!" << std::endl;
 	}
 }
