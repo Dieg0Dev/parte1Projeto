@@ -55,11 +55,17 @@ void Banco::cadastrarConta(int opcao){
 		if(opcao == 2){
 			novaConta->setPontuacao(10);
 			novaConta->setBonificacao(true);
+			std::cout << "Conta cadastrada com sucesso!" << std::endl;
 			return;
 		}
 
 		if(opcao == 3){
 			novaConta->setPoupanca(true);
+			std::cout << "Digite o saldo inicial da conta: ";
+			float saldo;
+			std::cin >> saldo;
+			novaConta->setSaldo(saldo);
+			std::cout << "Conta cadastrada com sucesso!" << std::endl;
 			return;
 		}
 
@@ -105,6 +111,7 @@ void Banco::funcaoCredito(){
 				aux = aux + (valor / 100);
 				contaAuxiliar->setPontuacao(aux);
 			}
+			std::cout << "Operacao realizada com sucesso!" << std::endl;
             return;
 		}
 		if(contaAuxiliar->getProximo() == nullptr) break;
@@ -127,12 +134,17 @@ void Banco::funcaoDebito(){
 			if(valor < 0){
 				std::cout << "Valor invalido" << std::endl;
 				return;
-			}	
-			if(valor > contaAuxiliar->getSaldo()){
-				std::cout << "Saldo insuficiente" << std::endl;
-				return;
+			}
+			if((!contaAuxiliar->getBonificacao() && !contaAuxiliar->getPoupanca()) || contaAuxiliar->getBonificacao()){
+				float aux;
+				aux = contaAuxiliar->getSaldo() - valor;
+				if(aux < -1000){
+					std::cout << "Operacao nao realizada. Limite de 1000 reais de saldo negativo." << std::endl;
+					return;
+				}
 			}
 			contaAuxiliar->diminuirSaldo(valor);
+			std::cout << "Operacao realizada com sucesso!" << std::endl;
             return;
 		}
 		if(contaAuxiliar->getProximo() == nullptr) break;
@@ -176,11 +188,24 @@ void Banco::transferencia(){
 	if(transferencia < 0){
 		std::cout << "Valor invalido" << std::endl;
 		return;
-	}	
-	if(transferencia > contaAuxiliar1->getSaldo()){
-		std::cout << "Conta origem sem saldo para operacao" << std::endl;
-		return;
 	}
+
+	if((!contaAuxiliar1->getBonificacao() && !contaAuxiliar1->getPoupanca()) || contaAuxiliar1->getBonificacao()){
+		float aux;
+		aux = contaAuxiliar1->getSaldo() - transferencia;
+		if(aux < -1000){
+			std::cout << "Operacao nao realizada. Limite de 1000 reais de saldo negativo na conta origem." << std::endl;
+			return;
+		}
+	}
+
+	if(contaAuxiliar1->getPoupanca()){
+		if(transferencia > contaAuxiliar1->getSaldo()){
+			std::cout << "Conta origem sem saldo para operacao" << std::endl;
+			return;
+		}
+	}
+
 	contaAuxiliar1->diminuirSaldo(transferencia);
 	contaAuxiliar2->aumentarSaldo(transferencia);
 	if(contaAuxiliar2->getBonificacao()){
@@ -188,6 +213,7 @@ void Banco::transferencia(){
 		aux = aux + (transferencia / 200);
 		contaAuxiliar2->setPontuacao(aux);
 	}
+	std::cout << "Operacao realizada com sucesso!" << std::endl;
 }
 
 void Banco::renderJuros(){
