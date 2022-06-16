@@ -223,7 +223,7 @@ void Banco::transferencia(){
 	contaAuxiliar2->aumentarSaldo(transferencia);
 	if(contaAuxiliar2->getBonificacao()){
 		int aux = contaAuxiliar2->getPontuacao();
-		aux = aux + (transferencia / 200);
+		aux = aux + (transferencia / 150);
 		contaAuxiliar2->setPontuacao(aux);
 	}
 	std::cout << "Operacao realizada com sucesso!" << std::endl;
