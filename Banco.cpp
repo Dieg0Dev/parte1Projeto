@@ -24,15 +24,16 @@ bool Banco::vazia(){
 	return (cabeca == nullptr);
 }
 
-void Banco::cadastrarConta(){
+void Banco::cadastrarConta(int opcao){
 	std::string numero;
 	std::cout << "Digite o numero da conta: ";
 	std::cin >> numero;
 
 	if(vazia()){
 		Conta *novaConta = new Conta(numero);
-		cabeca = novaConta;
-		cauda = novaConta;
+		setCabeca(novaConta);
+		setCauda(novaConta);
+		std::cout << "Conta cadastrada com sucesso!" << std::endl;
 	} else {
 		Conta *contaAuxiliar = getCabeca();
 		while(contaAuxiliar){
@@ -50,6 +51,19 @@ void Banco::cadastrarConta(){
 		novaConta->setAnterior(getCauda());
 		contaAuxiliar->setProximo(novaConta);
 		setCauda(novaConta);
+
+		if(opcao == 2){
+			novaConta->setPontuacao(10);
+			novaConta->setBonificacao(true);
+			return;
+		}
+
+		if(opcao == 3){
+			novaConta->setPoupanca(true);
+			return;
+		}
+
+		std::cout << "Conta cadastrada com sucesso!" << std::endl;
 	}
 }
 
@@ -86,6 +100,11 @@ void Banco::funcaoCredito(){
 				return;
 			}
 			contaAuxiliar->aumentarSaldo(valor);
+			if(contaAuxiliar->getBonificacao()){
+				int aux = contaAuxiliar->getPontuacao();
+				aux = aux + (valor / 100);
+				contaAuxiliar->setPontuacao(aux);
+			}
             return;
 		}
 		if(contaAuxiliar->getProximo() == nullptr) break;
@@ -164,4 +183,37 @@ void Banco::transferencia(){
 	}
 	contaAuxiliar1->diminuirSaldo(transferencia);
 	contaAuxiliar2->aumentarSaldo(transferencia);
+	if(contaAuxiliar2->getBonificacao()){
+		int aux = contaAuxiliar2->getPontuacao();
+		aux = aux + (transferencia / 200);
+		contaAuxiliar2->setPontuacao(aux);
+	}
+}
+
+void Banco::renderJuros(){
+	std::string aux;
+	float valor;
+	std::cout << "Digite o numero da conta onde será calculado o rendimento de juros" << std::endl;
+	std::cin >> aux;
+	Conta* contaAuxiliar = getCabeca();
+	while(contaAuxiliar){
+		if(aux == contaAuxiliar->getNumero()){
+			if(!contaAuxiliar->getPoupanca()){
+				std::cout << "Conta nao esta na categoria Poupanca" << std::endl;
+				return;
+			}
+			std::cout << "Digite a taxa de juros a ser calculada (apenas valores):";
+			std::cin >> valor;
+			if(valor < 0){
+				std::cout << "Valor de juros invalido" << std::endl;
+				return;
+			}
+			contaAuxiliar->setSaldo(contaAuxiliar->getSaldo() * (1+(valor/100)));
+            return;
+		}
+		if(contaAuxiliar->getProximo() == nullptr) break;
+		contaAuxiliar = contaAuxiliar->getProximo();
+	}
+	std::cout << "Conta nao encontrada" << std::endl;
+	return;
 }

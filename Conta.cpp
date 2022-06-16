@@ -27,7 +27,7 @@ float Conta::getSaldo(){
 }
 
 void Conta::setProximo(Conta *proximo){
-	proximo = proximo;
+	this->proximo = proximo;
 }
 
 Conta *Conta::getProximo(){
@@ -35,11 +35,35 @@ Conta *Conta::getProximo(){
 }
 
 void Conta::setAnterior(Conta *anterior){
-	anterior = anterior;
+	this->anterior = anterior;
 }
 
 Conta *Conta::getAnterior(){
 	return this->anterior;
+}
+
+void Conta::setPontuacao(int pontuacao){
+	this->pontuacao = pontuacao;
+}
+
+int Conta::getPontuacao(){
+	return this->pontuacao;
+}
+
+void Conta::setBonificacao(bool bonus){
+	this->bonus = bonus;
+}
+
+bool Conta::getBonificacao(){
+	return this->bonus;
+}
+
+void Conta::setPoupanca(bool poupanca){
+	this->poupanca = poupanca;
+}
+
+bool Conta::getPoupanca(){
+	return this->poupanca;
 }
 
 float Conta::aumentarSaldo(float valor){
