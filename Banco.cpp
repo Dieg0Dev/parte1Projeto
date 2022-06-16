@@ -4,6 +4,22 @@
 #include <string>
 #include <cstdio>
 
+void Banco::setCabeca(Conta *cabeca){
+	this->cabeca = cabeca;
+}
+
+Conta *Banco::getCabeca(){
+	return this->cabeca;
+}
+
+void Banco::setCauda(Conta *cauda){
+	this->cauda = cauda;
+}
+
+Conta *Banco::getCauda(){
+	return this->cauda;
+}
+
 bool Banco::vazia(){
 	return (cabeca == nullptr);
 }
