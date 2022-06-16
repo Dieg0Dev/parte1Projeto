@@ -10,7 +10,7 @@ int main(){
 
 	do{
 		std::cout << std::endl;
-		std::cout << "Selecione uma operação:" << std::endl;
+		std::cout << "Selecione uma operacao:" << std::endl;
 		std::cout << "1. Criar Conta" << std::endl;
         std::cout << "2. Consultar Saldo" << std::endl;
         std::cout << "3. Funcao Credito" << std::endl;
@@ -44,10 +44,10 @@ int main(){
 			case 9:
 				break;
 			default:
-				std::cout << "Opção inválida, digite novamente." << std::endl;
+				std::cout << "Opção invalida, digite novamente." << std::endl;
 		}
 
-	} while (op != 6);
+	} while (op != 9);
 
     return 0;
 }
