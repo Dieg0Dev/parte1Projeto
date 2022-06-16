@@ -10,14 +10,16 @@ int main(){
 
 	do{
 		std::cout << std::endl;
-		std::cout << "Selecione uma operação:" << std::endl;
+		std::cout << "Selecione uma operacao:" << std::endl;
 		std::cout << "1. Criar Conta" << std::endl;
         std::cout << "2. Consultar Saldo" << std::endl;
         std::cout << "3. Funcao Credito" << std::endl;
 		std::cout << "4. Funcao Debito" << std::endl;
         std::cout << "5. Transferencia" << std::endl;
 		std::cout << "6. Criar Conta com Bonus" << std::endl;
-		std::cout << "7. Sair" << std::endl;
+		std::cout << "7. Criar Conta Poupanca" << std::endl;
+		std::cout << "8. Render Juros" << std::endl;
+		std::cout << "9. Sair" << std::endl;
 		std::cout << std::endl;
 		std::cin >> op;
 		system("clear||cls");
@@ -36,12 +38,16 @@ int main(){
 			case 6:
 				banco.cadastrarConta(2); break;
 			case 7:
+				banco.cadastrarConta(3); break;
+			case 8:
+				banco.renderJuros(); break;
+			case 9:
 				break;
 			default:
-				std::cout << "Opção inválida, digite novamente." << std::endl;
+				std::cout << "Opção invalida, digite novamente." << std::endl;
 		}
 
-	} while (op != 6);
+	} while (op != 9);
 
     return 0;
 }
