@@ -11,7 +11,7 @@ int main(){
 	do{
 		std::cout << std::endl;
 		std::cout << "Selecione uma operacao:" << std::endl;
-		std::cout << "1. Criar Conta" << std::endl;
+		std::cout << "1. Criar Conta Simples" << std::endl;
         std::cout << "2. Consultar Saldo" << std::endl;
         std::cout << "3. Funcao Credito" << std::endl;
 		std::cout << "4. Funcao Debito" << std::endl;
