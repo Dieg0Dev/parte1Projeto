@@ -16,8 +16,11 @@ private:
 	bool poupanca = false;
 
 public:
-	//construtor
-	Conta(std::string numero); 
+	//construtores
+	Conta();
+	Conta(std::string numero, float saldo);
+	Conta(std::string numero, float saldo, bool bonus, int pontuacao);
+	Conta(std::string numero, float saldo, bool poupanca);
 
 	//gets e sets
 	void setNumero(std::string numero); 

@@ -19,9 +19,12 @@ public:
 	Conta *getCauda();
 
 	//outros metodos
+	bool verificarExistencia(std::string numero);
+	void adicionandoConta(Conta *novaConta);
+	Conta* dadosConta(std::string numero);
 	bool vazia();
-	void cadastrarConta(int opcao);
-	void consultarSaldo();
+
+	Conta* cadastrarConta(int opcao, std::string numero);
 	void funcaoCredito();
 	void funcaoDebito();
 	void transferencia();
