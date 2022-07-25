@@ -1,11 +1,28 @@
-#include "Conta.h"
+	#include "Conta.h"
 #include <iostream>
 #include <string>
 #include <cstdio>
 
-Conta::Conta(std::string numero){
+Conta::Conta(std::string numero, float saldo){
 	this->numero = numero;
-	this->saldo = 0;
+	this->saldo = saldo;
+	this->proximo = nullptr;
+	this->anterior = nullptr;
+}
+
+Conta::Conta(std::string numero, float saldo, bool bonus, int pontuacao){
+	this->numero = numero;
+	this->saldo = saldo;
+	this->bonus = bonus;
+	this->pontuacao = pontuacao;
+	this->proximo = nullptr;
+	this->anterior = nullptr;
+}
+
+Conta::Conta(std::string numero, float saldo, bool poupanca){
+	this->numero = numero;
+	this->saldo = saldo;
+	this->poupanca = poupanca;
 	this->proximo = nullptr;
 	this->anterior = nullptr;
 }
