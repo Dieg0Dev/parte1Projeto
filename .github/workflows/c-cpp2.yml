@@ -25,4 +25,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: bancoAtualizado
-        path: /home/runner/work/testedoteste/testedoteste/
+        path: /home/runner/work/parte1Projeto/parte1Projeto/
